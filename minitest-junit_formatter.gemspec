@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'minitest/junit/version'
+require 'minitest/junit_formatter/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'minitest-junit'
-  spec.version       = Minitest::Junit::VERSION
+  spec.name          = 'minitest-junit_formatter'
+  spec.version       = Minitest::JunitFormatter::VERSION
   spec.authors       = ['Allan Espinosa']
   spec.email         = ['allan.espinosa@outlook.com']
   spec.summary       = 'Junit reporter for Minitest ~> 5.0'

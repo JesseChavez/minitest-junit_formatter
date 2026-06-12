@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'stringio'
 require 'time'
 
-require 'minitest/junit'
+require "minitest/junit_formatter"
 
 class FakeTestName; end
 

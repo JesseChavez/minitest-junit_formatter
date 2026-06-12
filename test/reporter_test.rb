@@ -3,7 +3,7 @@ require 'stringio'
 require 'time'
 require 'nokogiri'
 
-require 'minitest/junit'
+require "minitest/junit_formatter"
 
 class FakeTestName; end
 

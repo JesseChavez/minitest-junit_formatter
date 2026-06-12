@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/mock'
-require 'minitest/junit_plugin'
+require "minitest/junit_formatter_plugin"
 
 class PluginTest < Minitest::Test
   def test_by_default_the_plugin_is_disabled

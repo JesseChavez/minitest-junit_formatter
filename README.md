@@ -1,4 +1,4 @@
-# Minitest::Junit
+# Minitest::JunitFormatter
 
 Generates a JUnit-compatible XML report for consumption with Jenkins.
 
@@ -6,7 +6,7 @@ Generates a JUnit-compatible XML report for consumption with Jenkins.
 
 Add this line to your application's Gemfile:
 
-    gem 'minitest-junit'
+    gem 'minitest-junit_formatter'
 
 And then execute:
 

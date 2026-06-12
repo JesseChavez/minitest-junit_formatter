@@ -1,4 +1,4 @@
-require 'minitest/junit/version'
+require "minitest/junit_formatter/version"
 require 'minitest'
 require 'ox'
 require 'socket'
@@ -6,7 +6,7 @@ require 'time'
 
 # :nodoc:
 module Minitest
-  module Junit
+  module JunitFormatter
     # :nodoc:
     class Reporter
       def initialize(io, options)

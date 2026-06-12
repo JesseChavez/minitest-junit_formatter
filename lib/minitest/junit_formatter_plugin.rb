@@ -1,4 +1,4 @@
-require 'minitest/junit'
+require "minitest/junit_formatter"
 
 # :nodoc:
 module Minitest
