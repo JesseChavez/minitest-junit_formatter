@@ -2,7 +2,7 @@ require "minitest/junit_formatter"
 
 # :nodoc:
 module Minitest
-  def self.plugin_junit_options(opts, options)
+  def self.plugin_junit_formatter_options(opts, options)
     opts.on '--junit', 'Generate a junit xml report' do
       options[:junit] = true
     end

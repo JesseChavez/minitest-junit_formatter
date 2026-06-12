@@ -7,7 +7,7 @@ class PluginTest < Minitest::Test
     opts = OptionParser.new
     options = {}
 
-    Minitest.plugin_junit_options opts, options
+    Minitest.plugin_junit_formatter_options opts, options
     opts.parse('')
 
     assert_equal({}, options)
@@ -16,7 +16,7 @@ class PluginTest < Minitest::Test
   def test_setting_the_commandline_activates_the_plugin
     opts = OptionParser.new
     options = {}
-    Minitest.plugin_junit_options opts, options
+    Minitest.plugin_junit_formatter_options opts, options
     opts.parse('--junit')
 
     assert_equal({ junit: true }, options)
@@ -67,7 +67,7 @@ class PluginTest < Minitest::Test
     opts = OptionParser.new
     options = {}
 
-    Minitest.plugin_junit_options opts, options
+    Minitest.plugin_junit_formatter_options opts, options
     opts.parse('--junit-filename=somefile.xml')
 
     assert_equal 'somefile.xml', options[:junit_filename]
@@ -76,7 +76,7 @@ class PluginTest < Minitest::Test
   def test_jenkins_sanitization_is_specified_by_a_flag
     opts = OptionParser.new
     options = {}
-    Minitest.plugin_junit_options opts, options
+    Minitest.plugin_junit_formatter_options opts, options
     opts.parse('--junit-jenkins')
     assert options[:junit_jenkins]
   end
