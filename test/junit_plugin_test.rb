@@ -26,7 +26,7 @@ class PluginTest < Minitest::Test
     options = {}
     Minitest.reporter = []
 
-    Minitest.plugin_junit_init(options)
+    Minitest.plugin_junit_formatter_init(options)
 
     assert_equal [], Minitest.reporter
   end
@@ -35,9 +35,9 @@ class PluginTest < Minitest::Test
     options = { junit: true }
     Minitest.reporter = []
 
-    Minitest.plugin_junit_init(options)
+    Minitest.plugin_junit_formatter_init(options)
 
-    assert_instance_of Minitest::Junit::Reporter, Minitest.reporter[0]
+    assert_instance_of Minitest::JunitFormatter::Reporter, Minitest.reporter[0]
   end
 
   def test_output_is_dumped_to_reportxml_by_default
@@ -46,7 +46,7 @@ class PluginTest < Minitest::Test
     Minitest.reporter = []
 
     file_klass.expect(:new, true, ['report.xml', 'w'])
-    Minitest.plugin_junit_init(options)
+    Minitest.plugin_junit_formatter_init(options)
 
     file_klass.verify
   end
@@ -58,7 +58,7 @@ class PluginTest < Minitest::Test
     Minitest.reporter = []
 
     file_klass.expect(:new, true, ['somefile.xml', 'w'])
-    Minitest.plugin_junit_init(options)
+    Minitest.plugin_junit_formatter_init(options)
 
     file_klass.verify
   end

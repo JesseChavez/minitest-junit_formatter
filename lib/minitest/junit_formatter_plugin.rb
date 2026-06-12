@@ -15,10 +15,10 @@ module Minitest
     end
   end
 
-  def self.plugin_junit_init(options)
+  def self.plugin_junit_formatter_init(options)
     return unless options.delete :junit
     file_klass = options.delete(:file_klass) || File
     io = file_klass.new options.delete(:junit_filename) || 'report.xml', 'w'
-    reporter << Junit::Reporter.new(io, options)
+    reporter << JunitFormatter::Reporter.new(io, options)
   end
 end

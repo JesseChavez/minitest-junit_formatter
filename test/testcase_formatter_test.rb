@@ -90,8 +90,8 @@ class TestCaseFormatter < Minitest::Test
   end
 
   def create_reporter(options = {})
-    io = StringIO.new ''
-    reporter = Minitest::Junit::Reporter.new io, options
+    io = StringIO.new("")
+    reporter = Minitest::JunitFormatter::Reporter.new(io, options)
     def reporter.output
       @io.string
     end

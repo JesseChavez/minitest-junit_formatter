@@ -23,7 +23,7 @@ class ReporterTest < Minitest::Test
   def test_encoding
     # Enforce File.external_encoding to UTF-8 to ensure that ASCII character will be correctly converted to UTF-8
     file = File.new('test/tmp/report.xml', 'w:UTF-8')
-    reporter = Minitest::Junit::Reporter.new file, { hostname: '‹foo›' }
+    reporter = Minitest::JunitFormatter::Reporter.new file, { hostname: '‹foo›' }
     reporter.start
     reporter.report
     file.close
@@ -103,8 +103,8 @@ class ReporterTest < Minitest::Test
   end
 
   def create_reporter(options = {})
-    io = StringIO.new ''
-    reporter = Minitest::Junit::Reporter.new io, options
+    io = StringIO.new("")
+    reporter = Minitest::JunitFormatter::Reporter.new(io, options)
     def reporter.output
       @io.string
     end
