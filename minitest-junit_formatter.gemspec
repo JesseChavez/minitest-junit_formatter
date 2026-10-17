@@ -23,5 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'nokogiri'
   spec.add_development_dependency 'rake', '~> 13'
+  spec.add_development_dependency 'rexml'
   spec.add_development_dependency 'rubocop', '~> 1'
 end

@@ -1,9 +1,12 @@
 module Minitest
   module JunitFormatter
     class NokogiriDocument
-      def document
+      def initialize
         @doc = Nokogiri::XML::Document.new
         @doc.encoding = 'UTF-8'
+      end
+
+      def document
         @doc
       end
 

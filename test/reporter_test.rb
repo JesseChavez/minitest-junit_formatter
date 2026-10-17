@@ -13,10 +13,22 @@ class ReporterTest < Minitest::Test
 
     reporter.report
 
-    assert_match(
-      %r{<?xml version="1.0" encoding="UTF-8"\?>\n<testsuites>\n  <testsuite name="minitest" timestamp="[^"]+" hostname="[^"]+" tests="0" skipped="0" failures="0" errors="0" time="0.000000"\/>\n<\/testsuites>\n},
-      reporter.output
+    assert_match(/\A<\?xml version="1.0" encoding="UTF-8"\?>\n/, reporter.output)
+
+    # Parse rather than match text: JRuby's Nokogiri orders attributes and whitespace differently
+    parsed_report = Nokogiri::XML(reporter.output)
+    assert_equal 'testsuites', parsed_report.root.name
+    testsuites = parsed_report.root.element_children
+    assert_equal ['testsuite'], testsuites.map(&:name)
+
+    testsuite = testsuites.first
+    assert_empty testsuite.children
+    assert_equal(
+      { 'name' => 'minitest', 'tests' => '0', 'skipped' => '0', 'failures' => '0', 'errors' => '0', 'time' => '0.000000' },
+      testsuite.to_h.reject { |key, _| %w[timestamp hostname].include?(key) }
     )
+    refute_empty testsuite['timestamp']
+    refute_empty testsuite['hostname']
   end
 
   # NOTE: This test will generate a temp file: "test/tmp/report.xml"
@@ -35,9 +47,11 @@ class ReporterTest < Minitest::Test
     reporter = create_reporter
 
     results = do_formatting_test(reporter, count: rand(100), cause_failures: 0)
+    parsed_report = Nokogiri::XML(reporter.output)
 
     results.each do |result|
-      assert_match("<testcase classname=\"FakeTestName\" name=\"#{result.name}\"", reporter.output)
+      assert parsed_report.at_xpath("//testcase[@classname='FakeTestName' and @name='#{result.name}']"),
+             "expected a testcase for #{result.name}"
     end
   end
 

@@ -1,6 +1,9 @@
 module Minitest
   module JunitFormatter
     class RexmlDocument
+      # Emit double-quoted attributes, matching the Nokogiri backend.
+      CONTEXT = { attribute_quote: :quote }.freeze
+
       def document
         doc = REXML::Document.new
         doc << REXML::XMLDecl.new('1.0', 'UTF-8')
@@ -8,7 +11,7 @@ module Minitest
       end
 
       def element(name)
-        REXML::Element.new(name)
+        REXML::Element.new(name, nil, CONTEXT)
       end
 
       def set_attr(el, name, value)
