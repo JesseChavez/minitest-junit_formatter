@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.2", "3.3", "3.4", "jruby-10"]
+        ruby: ["3.2", "3.3", "3.4", "jruby-10.0", "jruby-10.1"]
         minitest: ["5", "6"]
     env:
       MINITEST_VERSION: ${{ matrix.minitest }}
