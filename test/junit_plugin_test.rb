@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/mock'
+require_relative 'test_helper'
 require "minitest/junit_formatter_plugin"
 
 class PluginTest < Minitest::Test

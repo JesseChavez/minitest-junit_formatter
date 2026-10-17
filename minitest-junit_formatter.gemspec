@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Minitest::JunitFormatter::VERSION
   spec.authors       = ["Jesse Chavez", "Allan Espinosa"]
   spec.email         = ["jesse.chavez.jp@gmail.com"]
-  spec.summary       = "Junit report formatter for Minitest ~> 5.0"
-  spec.description   = "Junit report formatter for Minitest ~> 5.0"
+  spec.summary       = "Junit report formatter for Minitest 5 and 6"
+  spec.description   = "Junit report formatter for Minitest 5 and 6"
   spec.homepage      = "https://github.com/JesseChavez/minitest-junit_formatter"
   spec.license       = "MIT"
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(/^(test)\//)
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'minitest', '~> 5.11'
+  spec.add_dependency 'minitest', '>= 5.11', '< 7'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'nokogiri'
