@@ -27,6 +27,13 @@ module Minitest
         @doc = document_factory.new
       end
 
+      def prerecord(klass, name)
+        return unless @options[:verbose]
+
+        io.print "%s#%s = " % [klass.name, name]
+        io.flush
+      end
+
       def passed?
         true
       end
